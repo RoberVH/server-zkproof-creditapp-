@@ -12,8 +12,8 @@ server for zkproof-creditApp application
 
 ```
 npm install cors
-pnpm 
-pnpm 
+pnpm add snarkjs
+pnpm add circomlibjs
 pnpm 
 ```
 

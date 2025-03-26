@@ -1,17 +1,18 @@
-const express = require('express');
-const router = express.Router();
-const controller = require('../controllers/controller'); // Importa los controladores
+import express from 'express';
+import { createzkproofController } from '../controllers/createzkproofController.js';
+import  { testController } from '../controllers/testController.js';
 
-//Sample GET to read a file
-router.get('/read-file', controller.readFile);
+
+const router = express.Router();
+
+// testing and awakening route
+router.get('/ping', (req, res) => {
+    res.send('pong\n');
+  });
 
 // Route to create the  ZKP Proof
-router.get('createzkproof', controller.createzkproof)
+router.post('/createzkproof', createzkproofController)  // create ZKProof
+router.get('/test', testController)  // create ZKProof
 
 
-
-
-//Sample POST para to write a file
-router.post('/write-file', controller.writeFile);
-
-module.exports = router;
+export default router

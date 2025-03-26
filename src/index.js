@@ -1,6 +1,6 @@
-const express = require('express');
-const cors = require('cors'); 
-const routes = require('./routes/routes');
+import express from 'express';
+import cors from 'cors';
+import routes from './routes/routes.js';
 
 
 const app = express();
@@ -12,16 +12,11 @@ app.use(cors({
     //credentials: true // Allow sending of cookies & auth headers 
     allowedHeaders: ['Content-Type', 'Authorization'], // Encabezados permitidos
   }));
-
-  
 app.use(express.json());
+app.use(routes);
 
-// testing and awakening route
-app.get('/ping', (req, res) => {
-  res.send('pong\n');
-});
 
-app.use('/api', routes);
+
 
 // Iniciar el servidor
 app.listen(PORT, () => {
