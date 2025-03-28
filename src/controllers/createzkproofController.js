@@ -15,7 +15,8 @@ const createzkproofController = async (req, res) => {
   const resultCreateZKP = await createzkproof(inputData);
   if (!resultCreateZKP.status) throw new Error(resultCreateZKP.msg);
   console.log('resultCreateZKP',resultCreateZKP)
-  res.status(200).json({proof: resultCreateZKP.proof, publicSignals: resultCreateZKP.publicSignals });
+
+  res.status(200).json({proof: resultCreateZKP.paramsSC});
   } catch (error ) {
     console.log('error en controller, msj', error.message)
     res.status(500).json({ msg: error.message });

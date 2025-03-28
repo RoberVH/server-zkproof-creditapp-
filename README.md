@@ -14,10 +14,19 @@ server for zkproof-creditApp application
 npm install cors
 pnpm add snarkjs
 pnpm add circomlibjs
-pnpm 
+pnpm install ethers
 ```
 
 Notice tailwindcss is not last version as of march 2025, it won't work 
+
+## CIRCOM
+Circuit circom to create valid wage ZKProofs
+Verifier Contract VerifyValidWage.sol deployed to 
+    ``0xAd0fB84F188DF7Bb7A889FFC734739f34bBA2a14
+    ``
+    on Sepolia (as of March 2025))
+
+Call function function verifyProof(uint[2] calldata _pA, uint[2][2] calldata _pB, uint[2] calldata _pC, uint[3] calldata _pubSignals) public view returns (bool)  with proof to verify
 
 
 ### Execute dev environment

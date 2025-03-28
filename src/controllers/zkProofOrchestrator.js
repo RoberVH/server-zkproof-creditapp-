@@ -72,10 +72,21 @@ export const createzkproof = async (inputData) => {
       // check the generated proof is valid
       const isValid = await groth16.verify(verificationKey, publicSignals, proof);
       if (!isValid) throw new Error("Invalid proof")
+      // all right, last step: generate a suitable params array from proof &  publicSignals formated for smart contract verifier  [a, b, c, input] 
+      // [i.e. _pA, _pB, _pC, publicSignals]) using equivalent to CLI snarkjs generatecall
+      const callData = await groth16.exportSolidityCallData(proof, publicSignals);
+      console.log('Call Data:', callData);
+      // Opcional: Parsear a un objeto más legible
+      const [a, b, c, input] = JSON.parse(`[${callData}]`);
+      console.log('a:', a);
+      console.log('b:', b);
+      console.log('c:', c);
+      console.log('input:', input);
+
       return({
         status: true,
-        proof,
-        publicSignals
+        paramsSC: callData,
+        a, b, c, input
       })  
 
     } catch (error) {
