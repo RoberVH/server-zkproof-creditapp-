@@ -63,3 +63,8 @@ typings/
 tmp
 
 .DS_Store
+
+# circom files
+.zkey
+verification_key.json
+witness.wtns
