@@ -24,7 +24,7 @@ const testController = async (req, res) => {
       console.log('hash de', rfcPublish ,' es ', hash)
     res.status(200).json({});
     const otroHash = await poseidonHash(rfcPublish)
-    console.log('El otrohash', otroHash)
+    console.log('otrohash', otroHash)
   } catch (error ) {
     console.log('error en testController, msj', error.message)
     res.status(500).json({ msg: error.message });

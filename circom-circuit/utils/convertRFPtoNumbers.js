@@ -28,12 +28,8 @@ if (process.argv.length < 3) {
 //   const rfpNumber = base36ToBigInt(rfp)
 
 const rfp = process.argv[2]
-console.log('Convert ', rfp, 'to number')
 const rfpNumber = parseInt(rfp, 36)
-console.log(rfpNumber.toString())
-console.log('Convert back to RFP')
 const rfpOriginal = rfp.toString(36).toUpperCase()
 
-console.log('Original RFP', rfpOriginal)
 
   

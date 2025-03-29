@@ -13,10 +13,6 @@ const CONTRACT_ADDRESS = process.env.CONTRACT_ADDRESS
 const verifyZKProof = async (req, res) => {
   
   const {_pA,_pB,_pC, _pubSignals } = req.body;
-  console.log('pA',_pA)
-    console.log('pB',_pB)
-    console.log('pC',_pC)
-    console.log('pubSignals', _pubSignals)
   try {
     const provider = new ethers.JsonRpcProvider(RCP);
     if (!provider) {

@@ -34,19 +34,14 @@ export const createzkproof = async (inputData) => {
     // Get hashes of RFC and combination of  EmployeeWage, RFPEmployee and salt. 
     // First convert RFC to numeric Ascii codes and get its hash
     const employeeRFCBigInt = convertStrToBigInt(inputData.rfc)
-    console.log('employeeRFCBigInt',employeeRFCBigInt)
     const resultRFC = await poseidonHash([employeeRFCBigInt])
     if (!resultRFC.status) throw new Error(error.message)
     const RFPEmployee = resultRFC.hash
-    console.log('hash de employee',RFPEmployee)
-    console.log('typeof hash de employee',typeof RFPEmployee)
     const resultpublishRFC = await poseidonHash([
       BigInt(inputData.wageAmount), RFPEmployee, BigInt(inputData.salt)]
     )
     if (!resultpublishRFC.status) throw new Error(error.message)
     const publishRFC = resultpublishRFC.hash
-    console.log('publishRFC',publishRFC)
-    console.log('typeof publishRFC',typeof publishRFC)
     
     // set inputObject (the circuit inputData.json)
     const inputObject = {
@@ -56,7 +51,6 @@ export const createzkproof = async (inputData) => {
       RFP: RFPEmployee,
       suppliedHash: publishRFC
     }
-    console.log('inputObject',inputObject)
     // generate witness file from inputData sent1
     const witnessResult = await generateWitness(inputObject);
     if (!witnessResult.status) throw new Error(witnessResult.msg)
@@ -66,8 +60,6 @@ export const createzkproof = async (inputData) => {
         zkeyFile,      
         witnessResult.witnessFile  
       );
-      console.log('proof',proof)
-      console.log('publicSignals',publicSignals)
       
       // check the generated proof is valid
       const isValid = await groth16.verify(verificationKey, publicSignals, proof);
@@ -75,13 +67,8 @@ export const createzkproof = async (inputData) => {
       // all right, last step: generate a suitable params array from proof &  publicSignals formated for smart contract verifier  [a, b, c, input] 
       // [i.e. _pA, _pB, _pC, publicSignals]) using equivalent to CLI snarkjs generatecall
       const callData = await groth16.exportSolidityCallData(proof, publicSignals);
-      console.log('Call Data:', callData);
       // Opcional: Parsear a un objeto más legible
       const [a, b, c, input] = JSON.parse(`[${callData}]`);
-      console.log('a:', a);
-      console.log('b:', b);
-      console.log('c:', c);
-      console.log('input:', input);
 
       return({
         status: true,

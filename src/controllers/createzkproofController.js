@@ -10,11 +10,9 @@ import { createzkproof } from './zkProofOrchestrator.js';
 const createzkproofController = async (req, res) => {
   const inputData = req.body.inputData; // get params
   
-  console.log('en controller inputData', inputData)
   try {
   const resultCreateZKP = await createzkproof(inputData);
   if (!resultCreateZKP.status) throw new Error(resultCreateZKP.msg);
-  console.log('resultCreateZKP',resultCreateZKP)
 
   res.status(200).json({proof: resultCreateZKP.paramsSC});
   } catch (error ) {
