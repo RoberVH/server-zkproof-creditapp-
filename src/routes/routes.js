@@ -1,6 +1,5 @@
 import express from 'express';
 import { createzkproofController } from '../controllers/createzkproofController.js';
-import  { testController } from '../controllers/testController.js';
 import { verifyZKProof } from '../controllers/verifyZKProof.js';
 
 
@@ -13,7 +12,6 @@ router.get('/ping', (req, res) => {
 
 // Route to create the  ZKP Proof
 router.post('/createzkproof', createzkproofController)  // create ZKProof
-router.get('/test', testController)  // create ZKProof
 router.post('/verifyproof', verifyZKProof)
 
 

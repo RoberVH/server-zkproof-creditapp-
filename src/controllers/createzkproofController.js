@@ -1,6 +1,3 @@
-import e from 'express';
-import fs from 'fs';
-import path from "path";
 import { createzkproof } from './zkProofOrchestrator.js';
 
 
