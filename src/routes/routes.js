@@ -7,7 +7,7 @@ const router = express.Router();
 
 // testing and awakening route
 router.get('/ping', (req, res) => {
-    res.send('pong\n');
+    res.send('pong');
   });
 
 // Route to create the  ZKP Proof
