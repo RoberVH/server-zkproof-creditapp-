@@ -6,12 +6,13 @@ server for zkproof-creditApp application
 **Author**: Roberto VH [rovicher.eth](https://x.com/RoberVH)  
 **Description**: Server for Demo app for a ZKProof based validation of an employee having a wage greater that a Creditor requested minimum limit without disclosing real salary.  
 
+**Notes**   
+-This Demo server backend was created with NODE 20.13.1 &  Express  
+-Client of this Server is a webapp ZKProof-CreditApp [Github](https://github.com/RoberVH/zkproof-creditapp)
+
 ### This Server site is deployed at [Render.com](https://server-zkproof-creditapp.onrender.com )
 ### Demo Client site is deployed at [Netlity](https://zkproof-demo-app.netlify.app)
 
-**Notes**: 
--This demo server was created with NODE 20.13.1 &  Express
--Client of this App is at https://zkproof-demo-app.netlify.app/
 
 
 ### Basic installation of  Frameworks for  app from scratch
